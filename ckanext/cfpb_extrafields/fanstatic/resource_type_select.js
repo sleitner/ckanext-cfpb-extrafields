@@ -1,20 +1,14 @@
 // this generates a warning about unsaved data from CKAN
 // public/base/javascript/modules/basic-form.js
 $(function() {
-    $('#field-resource_type').change( function() {
-        var rtype = $('#field-resource_type').val();
-        if(      rtype == 'Data Dictionary'){
-            $( "#url" ).val('http://-datadictionary-')
-            $( "#resource_save" ).trigger( "click" );
-        }else if(rtype == 'Report'){ 
-            $( "#resource_save" ).trigger( "click" );
-        }else if(rtype == 'Documentation'){ 
-            $( "#resource_save" ).trigger( "click" );
-        }else if(rtype == 'Data File'){ 
-            $( "#resource_save" ).trigger( "click" );
-        }else if(rtype == 'Database'){
-            $( "#resource_save" ).trigger( "click" );
-        }else{
-        }
-    });
+    function showResourceFields() {
+        var resourceType = resourceEl.val().toLowerCase().replace(' ', '');
+        $('.cfpb_extrafield').addClass('hidden');
+        $('#cfpb_extrafields_' + resourceType).removeClass('hidden');
+    }
+    var resourceEl = $('#field-resource_type');
+    if (resourceEl.length > 0) {
+        showResourceFields();
+    }
+    $('#field-resource_type').on('change', showResourceFields);
 });
