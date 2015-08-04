@@ -48,7 +48,7 @@
     {% endblock %}
       
 <div class='core-field'>
-{{ form.select('resource_type', label=_('resource type'), id='field-resource_type', options=h.options_resource_type(), selected=data.resource_type, error=errors.resource_type, classes=['control-medium']) }}
+{{ form.select('resource_type', label=_('resource type'), id='field-resource_type', options=h.options_resource_type(), selected=data.resource_type, error=errors.resource_type, classes=['control-medium', 'hidden']) }}
 <script>
   var b='<button type="button" data-module="popover" \
                  data-module-html="resource_type_popover.html" \
