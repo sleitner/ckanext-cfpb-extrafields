@@ -1,0 +1,24 @@
+{#
+Displays a sidebard module with information for given resource
+
+res    - The respource dict
+
+Example:
+
+  {% snippet "package/snippets/resrouce_info.html", res=res %}
+
+#}
+{% set data = data or {} %}
+<section class="module module-narrow resources">
+  <h2 class="module-heading"><i class="icon-copy"></i> {{ _("Resource types") }}</h2>
+      <ul class="unstyled nav nav-simple" id="resource-switcher">
+
+        {% for resource in h.options_resource_type() %}
+          {% if resource.value %}
+            <li class="nav-item{{ ' active' if resource.value == res.resource_type }}">
+              <a href="#{{ resource.value }}" class="{{ 'active' if resource.value == res.resource_type }}">{{ resource.value }}</a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+</section>
